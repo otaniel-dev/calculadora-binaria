@@ -39,42 +39,38 @@ cont= len(array_0) - 1
 
 #Se a operação for soma[+], o código abaixo será executado;
 if operacao == '+':
-    
-    #Repete o loop enquanto o contador i for menor que o tamanho do array_0, o loop irá percorrer os dois arrays simultaneamente, somando os valores binários e armazenando o resultado na lista resultado;
-    for i in range(len(array_0)):
-        if ((array_0[cont] == array_1[cont] == '0' )and carry == 0):
-            
-            #Insere o valor '0', na posição 0 da lista resultado;
-            resultado.insert(0, '0')
+    for i in range(len(array1)):
+        if ((array1[cont] == array2[cont] == '0' )and carry == 0):
+            resultado.insert(0, "0")
             cont = cont - 1
             carry = 0         
-        elif ((array_0[cont] == array_1[cont] == '0') and carry == 1 ):
+        elif ((array1[cont] == array2[cont] == '0') and carry == 1 ):
             resultado.insert(0, '1')
             cont = cont - 1
             carry = 0
-        elif ((array_0[cont] == array_1[cont] == '1') and carry == 0):
-            if(i == (len(array_0)-1)):
-                resultado.insert(0, '11')
+        elif ((array1[cont] == array2[cont] == '1') and carry == 0):
+                if(i == (len(array1)-1)):
+                	resultado.insert(0, "10")
+                else:
+                	resultado.insert(0, "0")
+                	cont = cont - 1
+                	carry = 1
+        elif ((array1[cont] == array2[cont] == '1') and carry == 1):
+            if(i == (len(array1)-1)):
+                resultado.insert(0, "11")
             else:
-                resultado.insert(0, '0')
-                cont = cont - 1
-                carry = 1
-        elif ((array_0[cont] == array_1[cont] == '1') and carry == 1):
-            if(i == (len(array_0)-1)):
-                resultado.insert(0, '11')
-            else:
-                resultado.insert(0, '1')
+                resultado.insert(0, "1")
                 cont = cont - 1
                 carry = 1     
-        elif ((array_0[cont] != array_1[cont]) and carry == 1):
-            if (i == (len(array_0)-1)):
-                resultado.insert(0, '10')
+        elif ((array1[cont] != array2[cont]) and carry == 1):
+            if (i == (len(array1)-1)):
+                resultado.insert(0, "10")
             else:
-                resultado.insert(0, '0')
+                resultado.insert(0, "0")
                 cont = cont - 1
                 carry = 1
-        elif ((array_0[cont] != array_1[cont]) and carry == 0):
-            resultado.insert(0, '1')
+        elif ((array1[cont] != array2[cont]) and carry == 0):
+            resultado.insert(0, "1")
             cont = cont - 1
             carry = 0
 else:
